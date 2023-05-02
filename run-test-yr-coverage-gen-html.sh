@@ -9,7 +9,7 @@
 SCRIPT_DIR=$(dirname $0)
 
 # SRC_DIR is the directory containing the .gcno files (%{buildDir} in Qt Creator)
-SRC_DIR="${HOME}/yr_visualize_edit_graphically_DOT_FILES/src/yr_sd_runtime_verif"
+SRC_DIR="${HOME}/yr_sd_runtime_verif_UNIT_TESTS/yr_sd_runtime_verif"
 
 # COV_DIR is the directory where the coverage results will be stored
 COV_DIR="${SRC_DIR}/yr-tests-coverage-information"

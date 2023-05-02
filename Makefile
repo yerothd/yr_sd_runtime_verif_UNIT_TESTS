@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_SQL_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/home/yer/yr_sd_runtime_verif_UNIT_TESTS"'
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtTest -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I_generated -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I. -Isrc -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtTest -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I_generated -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -52,8 +52,8 @@ OBJECTS_DIR   = _generated/
 
 ####### Files
 
-SOURCES       = yr_monitor_test_1.cpp \
-		YR_UTILS_GENERATOR_MONITOR_TEST.cpp _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp \
+SOURCES       = src/yr_monitor_test_1.cpp \
+		src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp \
 		_generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 OBJECTS       = _generated/yr_monitor_test_1.o \
 		_generated/YR_UTILS_GENERATOR_MONITOR_TEST.o \
@@ -149,8 +149,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		yr_sd_runtime_verif_UNIT_TESTS.pro YR_UTILS_GENERATOR_MONITOR_TEST.hpp yr_monitor_test_1.cpp \
-		YR_UTILS_GENERATOR_MONITOR_TEST.cpp
+		yr_sd_runtime_verif_UNIT_TESTS.pro src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp src/yr_monitor_test_1.cpp \
+		src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 QMAKE_TARGET  = yr_monitor_test_1
 DESTDIR       = bin/
 TARGET        = bin/yr_monitor_test_1
@@ -364,8 +364,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents yr_sd_runtime_verif_UNIT_TESTS.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents YR_UTILS_GENERATOR_MONITOR_TEST.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents yr_monitor_test_1.cpp YR_UTILS_GENERATOR_MONITOR_TEST.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/yr_monitor_test_1.cpp src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -408,7 +408,7 @@ _generated/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/du
 compiler_moc_header_make_all: _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
-_generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp: YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
+_generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp: src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp \
 		yr_sd_runtime_verif/src/utils/YR_CPP_UTILS.hpp \
 		yr_sd_runtime_verif/src/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
@@ -418,7 +418,7 @@ _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp: YR_UTILS_GENERATOR_MONITOR_T
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EVENT.hpp \
 		_generated/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr_sd_runtime_verif_UNIT_TESTS/_generated/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr_sd_runtime_verif_UNIT_TESTS -I/home/yer/yr_sd_runtime_verif_UNIT_TESTS -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtTest -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include YR_UTILS_GENERATOR_MONITOR_TEST.hpp -o _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr_sd_runtime_verif_UNIT_TESTS/_generated/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr_sd_runtime_verif_UNIT_TESTS -I/home/yer/yr_sd_runtime_verif_UNIT_TESTS/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtTest -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp -o _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -434,7 +434,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-_generated/yr_monitor_test_1.o: yr_monitor_test_1.cpp YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
+_generated/yr_monitor_test_1.o: src/yr_monitor_test_1.cpp src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp \
 		yr_sd_runtime_verif/src/utils/YR_CPP_UTILS.hpp \
 		yr_sd_runtime_verif/src/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
@@ -442,9 +442,9 @@ _generated/yr_monitor_test_1.o: yr_monitor_test_1.cpp YR_UTILS_GENERATOR_MONITOR
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_object.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EVENT.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/yr_monitor_test_1.o yr_monitor_test_1.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/yr_monitor_test_1.o src/yr_monitor_test_1.cpp
 
-_generated/YR_UTILS_GENERATOR_MONITOR_TEST.o: YR_UTILS_GENERATOR_MONITOR_TEST.cpp YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
+_generated/YR_UTILS_GENERATOR_MONITOR_TEST.o: src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp \
 		yr_sd_runtime_verif/src/utils/YR_CPP_UTILS.hpp \
 		yr_sd_runtime_verif/src/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
@@ -453,7 +453,7 @@ _generated/YR_UTILS_GENERATOR_MONITOR_TEST.o: YR_UTILS_GENERATOR_MONITOR_TEST.cp
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EVENT.hpp \
 		yr_sd_runtime_verif/src/YR_CPP_MONITOR_STATE.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/YR_UTILS_GENERATOR_MONITOR_TEST.o YR_UTILS_GENERATOR_MONITOR_TEST.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/YR_UTILS_GENERATOR_MONITOR_TEST.o src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 
 _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.o: _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.o _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp

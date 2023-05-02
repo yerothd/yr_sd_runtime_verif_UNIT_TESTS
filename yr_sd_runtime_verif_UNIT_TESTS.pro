@@ -23,6 +23,9 @@ QT += testlib
 
 QMAKE_CXXFLAGS_RELEASE += --branch-probabilities -fprofile-arcs -ftest-coverage --coverage
 
+# includes & libs
+INCLUDEPATH += $$PWD/src 
+
 LIBS += -L$$PWD/yr_sd_runtime_verif/lib -lyr_sd_runtime_verif
 
 LIBS += -lgcov
@@ -30,13 +33,11 @@ LIBS += -lgcov
 DESTDIR = bin
 
 # app sources
-SOURCES += $$files($$PWD/*.cpp)
-HEADERS += $$files($$PWD/*.hpp)
+SOURCES += $$files($$PWD/src/*.cpp)
+HEADERS += $$files($$PWD/src/*.hpp)
 RESOURCES = yr_sd_runtime_verif_UNIT_TESTS.qrc
 
 
-# includes & libs
-INCLUDEPATH += $$PWD 
 
 
 # temp dirs (unix)
