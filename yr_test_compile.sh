@@ -1,5 +1,9 @@
 #!/bin/bash
 
+YR_SD_RUNTIME_VERIF_SUT="${HOME}/yr_sd_runtime_verif"
+
+${YR_SD_RUNTIME_VERIF_SUT}/yr_DEPLOY_FOR_lang_UNIT_TESTS-development.sh
+
 TEST_YR_FILE_OUTPUT="TEST_YR_RESULTS.TXT"
 
 CUR_DIR="$(pwd)"
@@ -22,5 +26,5 @@ cd "${YR_TEST_DIR}"
 clear && qmake && make clean && make -j2 && \
 	cd "${CUR_DIR}" && \
 	bin/yr_monitor_test_1 > "${TEST_YR_FILE_OUTPUT}" 2>&1 && \
-  run-test-yr-coverage-gen-html.sh 
+	run-test-yr-coverage-gen-html.sh	
 

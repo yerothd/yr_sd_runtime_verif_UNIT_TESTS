@@ -89,7 +89,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 						->create_yr_monitor_edge(YR_CPP_UTILS::EMPTY_STRING,
 												 _a_root_STATE->get_MONITOR_STATE_NAME());
 
-	QVERIFY (0 != a_root_edge);
+	QVERIFY2 (0 != a_root_edge, "a_root_edge = 0");
 
 	_A_RUNTIME_MONITOR_FOR_TESTING->set_yr_root_edge(a_root_edge);
 
@@ -98,6 +98,24 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY2 (_A_RUNTIME_MONITOR_FOR_TESTING->get_current_triggered_EDGE() == a_root_edge,
 			  "CURRENT TRIGGERED EDGE IS NOT MATCHING !");
+}
+
+
+void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_STATE_TEST()
+{
+	YR_CPP_MONITOR_STATE *_a_test_ut_state;
+
+	_a_test_ut_state =
+		_A_RUNTIME_MONITOR_FOR_TESTING->create_yr_monitor_state(E_STATE);
+
+	YR_QVERIFY2_QSTRING(0 != _a_test_ut_state,
+						QString("NO EXISTING STATE: '%1' found !").arg(E_STATE));
+
+
+	YR_QVERIFY2_QSTRING(YR_CPP_UTILS::isEqualCaseInsensitive(E_STATE,
+							_a_test_ut_state->get_MONITOR_STATE_NAME()),
+						QString("RETURNED A WRONG EXISTING STATE: '%1'!")
+							.arg(_a_test_ut_state->get_MONITOR_STATE_NAME()));
 }
 
 
