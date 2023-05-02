@@ -6,7 +6,7 @@
 
 #include "YR_UTILS_GENERATOR_MONITOR_TEST.hpp"
 
-#include "yr_sd_runtime_verif/src/YR_CPP_MONITOR_STATE.hpp"
+#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR_STATE.hpp"
 
 QString YR_UTILS_GENERATOR_MONITOR_TEST::D_STATE = "D";
 

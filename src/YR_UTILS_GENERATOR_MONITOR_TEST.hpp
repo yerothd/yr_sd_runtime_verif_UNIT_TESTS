@@ -4,9 +4,9 @@
  *      Author: PROF. DR.-ING. XAVIER NOUMBISSI NOUNDOU
  */
 
-#include "yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp"
+#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp"
 
-#include "yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp"
+#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp"
 
 
 #include <QtTest/QtTest>
