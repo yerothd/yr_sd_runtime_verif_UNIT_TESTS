@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-./yr_DEPLOY_FOR_lang_UNIT_TESTS-development.sh
-
 TEST_YR_FILE_OUTPUT="TEST_YR_RESULTS.TXT"
 
 CUR_DIR="$(pwd)"
