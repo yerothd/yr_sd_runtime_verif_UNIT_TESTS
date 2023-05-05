@@ -84,6 +84,13 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY (0 != _a_root_STATE);
 
+	_a_root_STATE->set_START_STATE(true);
+
+	if (_an_edge_TEST->get_TARGET_STATE())
+	{
+		_an_edge_TEST->get_TARGET_STATE()->set_FINAL_STATE(true);
+	}
+
 	YR_CPP_MONITOR_EDGE * a_root_edge =
 			_A_RUNTIME_MONITOR_FOR_TESTING
 						->create_yr_monitor_edge(YR_CPP_UTILS::EMPTY_STRING,
@@ -168,31 +175,22 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::DOT_PRINT_2_VIEW_RUNTIME_MONITOR_TEST()
 void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_EXPORT_CLASSES_headers_TEST()
 {
 	QString header_FILE_content =
-			_A_RUNTIME_MONITOR_FOR_TESTING->YR_generate_cplusplus_headers_files();
+			_A_RUNTIME_MONITOR_FOR_TESTING
+				->YR_generate_cplusplus_headers_files__AND__SAVE__TO__DISK();
 
 //	qDebug() << "header file content: "
 //			 << header_FILE_content;
-
-	_A_RUNTIME_MONITOR_FOR_TESTING
-		->save_yr_SOURCE_FILES(QString("yr_rtm_%1.hpp")
-								 .arg(_A_RUNTIME_MONITOR_FOR_TESTING->get_RUNTIME_MONITOR_NAME()),
-								 	  header_FILE_content);
-
 }
 
 
 void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_EXPORT_CLASSES_SOURCES_TEST()
 {
 	QString SOURCE_FILE_content =
-			_A_RUNTIME_MONITOR_FOR_TESTING->YR_generate_cplusplus_sources_files();
+			_A_RUNTIME_MONITOR_FOR_TESTING
+				->YR_generate_cplusplus_sources_files__AND__SAVE__TO__DISK();
 
 //	qDebug() << "SOURCE FILE CONTENT: "
 //			 << SOURCE_FILE_content;
-
-	_A_RUNTIME_MONITOR_FOR_TESTING
-		->save_yr_SOURCE_FILES(QString("yr_rtm_%1.cpp")
-								 .arg(_A_RUNTIME_MONITOR_FOR_TESTING->get_RUNTIME_MONITOR_NAME()),
-								 SOURCE_FILE_content);
 }
 
 
