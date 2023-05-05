@@ -76,7 +76,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY (0 != _an_edge_TEST);
 
-	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT("yeroth()");
+	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT("'yeroth()'");
 
 	QVERIFY (0 != an_event);
 
@@ -141,7 +141,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	bool TRIGGERED =
 	_A_RUNTIME_MONITOR_FOR_TESTING
-		->YR_trigger_an_edge_event("yeroth()",
+		->YR_trigger_an_edge_event("'yeroth()'",
 								   resulting_edges.at(0)->get_guarded_CONDITION_expression());
 
 	QVERIFY2 (true == TRIGGERED, "EDGE COULDLN'T BE TRIGGERED");
