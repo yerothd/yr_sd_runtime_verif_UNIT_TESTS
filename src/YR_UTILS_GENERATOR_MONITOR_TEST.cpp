@@ -76,7 +76,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY (0 != _an_edge_TEST);
 
-	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT("'yeroth()'");
+	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT("'yeroth'");
 
 	QVERIFY (0 != an_event);
 
