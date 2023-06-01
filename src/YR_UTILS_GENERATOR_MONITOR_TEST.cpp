@@ -144,6 +144,21 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY (0 != resulting_edges.at(0));
 
+	//++++++++++++++
+
+	_A_RUNTIME_MONITOR_FOR_TESTING->TRACE_LOG_current_RECEIVED_EVENT_TOKEN(AN_EDGE_EVENT_TOKEN);
+
+	bool AN_EDGE_EVENT_TOKEN_in_trace_log =
+				_A_RUNTIME_MONITOR_FOR_TESTING->IS_in_TRACE_LOG(AN_EDGE_EVENT_TOKEN);
+
+	YR_QVERIFY2_QSTRING (AN_EDGE_EVENT_TOKEN_in_trace_log,
+			  	  	  	 QString("EVENT (edge transition) %1 not found in system trace log")
+						 	 .arg(AN_EDGE_EVENT_TOKEN));
+
+
+
+	//++++++++++++++
+
 	bool TRIGGERED =
 	_A_RUNTIME_MONITOR_FOR_TESTING
 		->YR_trigger_an_edge_event(AN_EDGE_EVENT_TOKEN,
