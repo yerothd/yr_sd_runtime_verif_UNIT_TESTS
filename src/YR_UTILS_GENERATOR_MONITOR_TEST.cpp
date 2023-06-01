@@ -12,6 +12,8 @@ QString YR_UTILS_GENERATOR_MONITOR_TEST::D_STATE = "D";
 
 QString YR_UTILS_GENERATOR_MONITOR_TEST::E_STATE = "E";
 
+QString YR_UTILS_GENERATOR_MONITOR_TEST::AN_EDGE_EVENT_TOKEN = "'yeroth'";
+
 
 YR_CPP_MONITOR_STATE *YR_UTILS_GENERATOR_MONITOR_TEST::_a_root_STATE = 0;
 
@@ -76,7 +78,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY (0 != _an_edge_TEST);
 
-	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT("'yeroth'");
+	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT(AN_EDGE_EVENT_TOKEN);
 
 	QVERIFY (0 != an_event);
 
@@ -116,13 +118,14 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_STATE_TEST()
 		_A_RUNTIME_MONITOR_FOR_TESTING->create_yr_monitor_state(E_STATE);
 
 	YR_QVERIFY2_QSTRING(0 != _a_test_ut_state,
-						QString("NO EXISTING STATE: '%1' found !").arg(E_STATE));
+						QString("NO EXISTING STATE: '%1' found !")
+							.arg(E_STATE));
 
 
-	YR_QVERIFY2_QSTRING(YR_CPP_UTILS::isEqualsCaseInsensitive(E_STATE,
-							_a_test_ut_state->get_MONITOR_STATE_NAME()),
-						QString("RETURNED A WRONG EXISTING STATE: '%1'!")
-							.arg(_a_test_ut_state->get_MONITOR_STATE_NAME()));
+	YR_QVERIFY2_QSTRING
+		(YR_CPP_UTILS::isEqualsCaseInsensitive(E_STATE, _a_test_ut_state->get_MONITOR_STATE_NAME()),
+										   QString("RETURNED A WRONG EXISTING STATE: '%1'!")
+										   	   .arg(_a_test_ut_state->get_MONITOR_STATE_NAME()));
 }
 
 
@@ -135,13 +138,15 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 						  	    D_STATE,
 								resulting_edges);
 
-	QVERIFY2 (resulting_edges.size() > 0, "COULDN'T FIND A 'yeroth()' EDGE");
+	YR_QVERIFY2_QSTRING (resulting_edges.size() > 0,
+			  	  	  	 QString("COULDN'T FIND A %1 EDGE")
+						 	 .arg(AN_EDGE_EVENT_TOKEN));
 
 	QVERIFY (0 != resulting_edges.at(0));
 
 	bool TRIGGERED =
 	_A_RUNTIME_MONITOR_FOR_TESTING
-		->YR_trigger_an_edge_event("'yeroth()'",
+		->YR_trigger_an_edge_event(AN_EDGE_EVENT_TOKEN,
 								   resulting_edges.at(0)->get_guarded_CONDITION_expression());
 
 	QVERIFY2 (true == TRIGGERED, "EDGE COULDLN'T BE TRIGGERED");

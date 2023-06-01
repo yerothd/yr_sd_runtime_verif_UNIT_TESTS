@@ -60,6 +60,8 @@ protected:
 
 	static QString E_STATE;
 
+	static QString AN_EDGE_EVENT_TOKEN;
+
 	static YR_CPP_MONITOR_STATE *_a_root_STATE;
 
 	static YR_CPP_MONITOR_EDGE *_an_edge_TEST;
