@@ -395,8 +395,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp
 _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp: yr_sd_runtime_verif_UNIT_TESTS.qrc \
 		/usr/lib/qt5/bin/rcc \
-		yr_rtm_YR_TAB_DEPARTMENT_LTS_TEST_1.TEMPLATE_HPP \
-		yr_rtm_YR_TAB_DEPARTMENT_LTS_TEST_1.TEMPLATE_CPP
+		yr_runtime_monitor_template.HPP \
+		yr_runtime_monitor_template.CPP
 	/usr/lib/qt5/bin/rcc -name yr_sd_runtime_verif_UNIT_TESTS yr_sd_runtime_verif_UNIT_TESTS.qrc -o _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp
 
 compiler_moc_predefs_make_all: _generated/moc_predefs.h

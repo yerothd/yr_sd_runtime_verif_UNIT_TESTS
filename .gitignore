@@ -26,3 +26,7 @@ ui_*
 *.lof 
 *.out 
 *.toc
+*.gcno
+*gcda
+*html
+yr_sd_runtime_verif
