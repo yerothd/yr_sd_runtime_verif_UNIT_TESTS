@@ -59,7 +59,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_TEST()
 					 _A_RUNTIME_MONITOR_FOR_TESTING->get_RUNTIME_MONITOR_NAME());
 
 	bool RUNTIME_MONITOR_NAME_FINE =
-			YR_CPP_UTILS::isEqualCaseInsensitive(YR_RUNTIME_3,
+			YR_CPP_UTILS::isEqualsCaseInsensitive(YR_RUNTIME_3,
 					_A_RUNTIME_MONITOR_FOR_TESTING->get_RUNTIME_MONITOR_NAME());
 
 	QVERIFY2 (RUNTIME_MONITOR_NAME_FINE, ERROR_MESSAGE_WHEN_TEST_FAILS.toStdString().c_str());
@@ -119,7 +119,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_STATE_TEST()
 						QString("NO EXISTING STATE: '%1' found !").arg(E_STATE));
 
 
-	YR_QVERIFY2_QSTRING(YR_CPP_UTILS::isEqualCaseInsensitive(E_STATE,
+	YR_QVERIFY2_QSTRING(YR_CPP_UTILS::isEqualsCaseInsensitive(E_STATE,
 							_a_test_ut_state->get_MONITOR_STATE_NAME()),
 						QString("RETURNED A WRONG EXISTING STATE: '%1'!")
 							.arg(_a_test_ut_state->get_MONITOR_STATE_NAME()));
@@ -150,7 +150,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY2 (0 != a_current_state, "[2] CURRENT STATE IS 0 (NULL) !");
 
-	QVERIFY2 (YR_CPP_UTILS::isEqualCaseInsensitive(a_current_state->get_MONITOR_STATE_NAME(), D_STATE),
+	QVERIFY2 (YR_CPP_UTILS::isEqualsCaseInsensitive(a_current_state->get_MONITOR_STATE_NAME(), D_STATE),
 			  QString("CURRENT STATE IS NOT: '%1'")
 			  	  .arg(D_STATE).toStdString().c_str());
 }
