@@ -30,3 +30,5 @@ ui_*
 *gcda
 *html
 yr_sd_runtime_verif
+target_wrapper.sh
+bin
