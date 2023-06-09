@@ -47,9 +47,9 @@ private slots:
 
 	void FIND_A_RUNTIME_MONITOR_EDGE_TEST();
 
-	void _YR_TRIGGER_guarded_condition_EDGE_TEST();
+	void YR_TRIGGER_guarded_condition_EDGE_TEST();
 
-	void _YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST();
+	void YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST();
 
 	void DOT_PRINT_VIEW_RUNTIME_MONITOR_TEST();
 
