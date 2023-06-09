@@ -198,6 +198,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_EXPORT_CLASSES_headers_TEST()
 			_A_RUNTIME_MONITOR_FOR_TESTING
 				->YR_generate_cplusplus_headers_files__AND__SAVE__TO__DISK();
 
+	QVERIFY (!header_FILE_content.isEmpty());
 //	qDebug() << "header file content: "
 //			 << header_FILE_content;
 }
@@ -209,6 +210,7 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_EXPORT_CLASSES_SOURCES_TEST()
 			_A_RUNTIME_MONITOR_FOR_TESTING
 				->YR_generate_cplusplus_sources_files__AND__SAVE__TO__DISK();
 
+	QVERIFY (!SOURCE_FILE_content.isEmpty());
 //	qDebug() << "SOURCE FILE CONTENT: "
 //			 << SOURCE_FILE_content;
 }
