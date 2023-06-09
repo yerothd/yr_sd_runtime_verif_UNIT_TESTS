@@ -6,13 +6,17 @@
 
 #include "YR_UTILS_GENERATOR_MONITOR_TEST.hpp"
 
-#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR_STATE.hpp"
+#include "../yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp"
+
+QString YR_UTILS_GENERATOR_MONITOR_TEST::C_STATE = "C";
 
 QString YR_UTILS_GENERATOR_MONITOR_TEST::D_STATE = "D";
 
 QString YR_UTILS_GENERATOR_MONITOR_TEST::E_STATE = "E";
 
-QString YR_UTILS_GENERATOR_MONITOR_TEST::AN_EDGE_EVENT_TOKEN = "'yeroth'";
+QString YR_UTILS_GENERATOR_MONITOR_TEST::C_D_state_transition_EVENT_TOKEN = "'delete'";
+
+QString YR_UTILS_GENERATOR_MONITOR_TEST::D_E_state_transition_EVENT_TOKEN = "'yeroth'";
 
 
 YR_CPP_MONITOR_STATE *YR_UTILS_GENERATOR_MONITOR_TEST::_a_root_STATE = 0;
@@ -74,11 +78,11 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	_an_edge_TEST = 0;
 
-	_an_edge_TEST = _A_RUNTIME_MONITOR_FOR_TESTING->create_yr_monitor_edge(E_STATE, D_STATE);
+	_an_edge_TEST = _A_RUNTIME_MONITOR_FOR_TESTING->create_yr_monitor_edge(D_STATE, E_STATE);
 
 	QVERIFY (0 != _an_edge_TEST);
 
-	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT(AN_EDGE_EVENT_TOKEN);
+	YR_CPP_MONITOR_EVENT *an_event = _an_edge_TEST->set_EDGE_EVENT(D_E_state_transition_EVENT_TOKEN);
 
 	QVERIFY (0 != an_event);
 
@@ -129,40 +133,53 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_STATE_TEST()
 }
 
 
+void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_guarded_condition_EDGE_TEST()
+{
+
+}
+
+
 void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 {
 	QList<YR_CPP_MONITOR_EDGE *> resulting_edges;
 
 	_A_RUNTIME_MONITOR_FOR_TESTING
-		->find_yr_monitor_edges(E_STATE,
-						  	    D_STATE,
+		->find_yr_monitor_edges(D_STATE,
+						  	    E_STATE,
 								resulting_edges);
 
 	YR_QVERIFY2_QSTRING (resulting_edges.size() > 0,
 			  	  	  	 QString("COULDN'T FIND A %1 EDGE")
-						 	 .arg(AN_EDGE_EVENT_TOKEN));
+						 	 .arg(D_E_state_transition_EVENT_TOKEN));
 
 	QVERIFY (0 != resulting_edges.at(0));
 
 	//++++++++++++++
 
-	_A_RUNTIME_MONITOR_FOR_TESTING->TRACE_LOG_current_RECEIVED_EVENT_TOKEN(AN_EDGE_EVENT_TOKEN);
+	_A_RUNTIME_MONITOR_FOR_TESTING->TRACE_LOG_current_RECEIVED_EVENT_TOKEN(D_E_state_transition_EVENT_TOKEN);
 
 	bool AN_EDGE_EVENT_TOKEN_in_trace_log =
-				_A_RUNTIME_MONITOR_FOR_TESTING->IS_in_TRACE_LOG(AN_EDGE_EVENT_TOKEN);
+				_A_RUNTIME_MONITOR_FOR_TESTING->IS_in_TRACE_LOG(D_E_state_transition_EVENT_TOKEN);
 
 	YR_QVERIFY2_QSTRING (AN_EDGE_EVENT_TOKEN_in_trace_log,
 			  	  	  	 QString("EVENT (edge transition) %1 not found in system trace log")
-						 	 .arg(AN_EDGE_EVENT_TOKEN));
+						 	 .arg(D_E_state_transition_EVENT_TOKEN));
 
 
 
 	//++++++++++++++
 
-	bool TRIGGERED =
-	_A_RUNTIME_MONITOR_FOR_TESTING
-		->YR_trigger_an_edge_event(AN_EDGE_EVENT_TOKEN,
-								   resulting_edges.at(0)->get_guarded_CONDITION_expression());
+	bool TRIGGERED = _A_RUNTIME_MONITOR_FOR_TESTING
+						->YR_trigger_an_edge_event(D_E_state_transition_EVENT_TOKEN);
+
+
+	QVERIFY (0 == resulting_edges.at(0)->get_guarded_CONDITION_expression());
+
+
+	YR_QVERIFY2_QSTRING ((true == resulting_edges.at(0)->evaluate_GUARDED_CONDITION_expression()),
+			  	  	  	 QString("GUARDED CONDITION for state transition \"%1\" DOESN'T EVALUATE TO \"True\"")
+						 	 .arg(resulting_edges.at(0)->get_guarded_CONDITION_expression__TO_STRING()));
+
 
 	QVERIFY2 (true == TRIGGERED, "EDGE COULDLN'T BE TRIGGERED");
 
@@ -170,9 +187,9 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY2 (0 != a_current_state, "[2] CURRENT STATE IS 0 (NULL) !");
 
-	QVERIFY2 (YR_CPP_UTILS::isEqualsCaseInsensitive(a_current_state->get_MONITOR_STATE_NAME(), D_STATE),
+	QVERIFY2 (YR_CPP_UTILS::isEqualsCaseInsensitive(a_current_state->get_MONITOR_STATE_NAME(), E_STATE),
 			  QString("CURRENT STATE IS NOT: '%1'")
-			  	  .arg(D_STATE).toStdString().c_str());
+			  	  .arg(E_STATE).toStdString().c_str());
 }
 
 

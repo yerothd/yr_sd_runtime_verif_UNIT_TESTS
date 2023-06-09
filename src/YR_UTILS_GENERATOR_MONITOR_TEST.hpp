@@ -4,9 +4,14 @@
  *      Author: PROF. DR.-ING. XAVIER NOUMBISSI NOUNDOU
  */
 
-#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp"
 
-#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp"
+#ifndef YR_SD_RUNTIME_VERIF_UNIT_TEST_GENERATOR_TEST_HPP_
+#define YR_SD_RUNTIME_VERIF_UNIT_TEST_GENERATOR_TEST_HPP_
+
+
+#include "../yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp"
+
+#include "../yr_sd_runtime_verif/YR_CPP_MONITOR.hpp"
 
 
 #include <QtTest/QtTest>
@@ -21,8 +26,6 @@ class YR_UTILS_GENERATOR_MONITOR_TEST : public QObject
 	Q_OBJECT
 
 public:
-
-	YR_CPP_CLASS_OPERATORS
 
 	void initTestCase();
 
@@ -44,6 +47,8 @@ private slots:
 
 	void FIND_A_RUNTIME_MONITOR_EDGE_TEST();
 
+	void _YR_TRIGGER_guarded_condition_EDGE_TEST();
+
 	void _YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST();
 
 	void DOT_PRINT_VIEW_RUNTIME_MONITOR_TEST();
@@ -56,11 +61,15 @@ private slots:
 
 protected:
 
+	static QString C_STATE;
+
 	static QString D_STATE;
 
 	static QString E_STATE;
 
-	static QString AN_EDGE_EVENT_TOKEN;
+	static QString C_D_state_transition_EVENT_TOKEN;
+
+	static QString D_E_state_transition_EVENT_TOKEN;
 
 	static YR_CPP_MONITOR_STATE *_a_root_STATE;
 
@@ -68,5 +77,11 @@ protected:
 
 	static YR_CPP_MONITOR *_A_RUNTIME_MONITOR_FOR_TESTING;
 };
+
+
+#define YR_QVERIFY2_QSTRING(B, QS) QVERIFY2(B, GET_C_STR_FROM_QSTRING(QS))
+
+
+#endif //YR_SD_RUNTIME_VERIF_UNIT_TEST_GENERATOR_TEST_HPP_
 
 
