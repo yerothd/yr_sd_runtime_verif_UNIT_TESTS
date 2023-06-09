@@ -6,7 +6,7 @@
 
 #include "YR_UTILS_GENERATOR_MONITOR_TEST.hpp"
 
-#include "../yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp"
+#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR_STATE.hpp"
 
 QString YR_UTILS_GENERATOR_MONITOR_TEST::C_STATE = "C";
 
@@ -135,12 +135,6 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::CREATE_A_RUNTIME_MONITOR_STATE_TEST()
 
 void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_guarded_condition_EDGE_TEST()
 {
-
-}
-
-
-void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
-{
 	QList<YR_CPP_MONITOR_EDGE *> resulting_edges;
 
 	_A_RUNTIME_MONITOR_FOR_TESTING
@@ -154,8 +148,18 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 
 	QVERIFY (0 != resulting_edges.at(0));
 
-	//++++++++++++++
 
+	QVERIFY (0 == resulting_edges.at(0)->get_guarded_CONDITION_expression());
+
+
+	YR_QVERIFY2_QSTRING ((true == resulting_edges.at(0)->evaluate_GUARDED_CONDITION_expression()),
+			  	  	  	 QString("GUARDED CONDITION for state transition \"%1\" DOESN'T EVALUATE TO \"True\"")
+						 	 .arg(resulting_edges.at(0)->get_guarded_CONDITION_expression__TO_STRING()));
+}
+
+
+void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
+{
 	_A_RUNTIME_MONITOR_FOR_TESTING->TRACE_LOG_current_RECEIVED_EVENT_TOKEN(D_E_state_transition_EVENT_TOKEN);
 
 	bool AN_EDGE_EVENT_TOKEN_in_trace_log =
@@ -166,22 +170,14 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 						 	 .arg(D_E_state_transition_EVENT_TOKEN));
 
 
-
 	//++++++++++++++
 
 	bool TRIGGERED = _A_RUNTIME_MONITOR_FOR_TESTING
 						->YR_trigger_an_edge_event(D_E_state_transition_EVENT_TOKEN);
 
 
-	QVERIFY (0 == resulting_edges.at(0)->get_guarded_CONDITION_expression());
-
-
-	YR_QVERIFY2_QSTRING ((true == resulting_edges.at(0)->evaluate_GUARDED_CONDITION_expression()),
-			  	  	  	 QString("GUARDED CONDITION for state transition \"%1\" DOESN'T EVALUATE TO \"True\"")
-						 	 .arg(resulting_edges.at(0)->get_guarded_CONDITION_expression__TO_STRING()));
-
-
 	QVERIFY2 (true == TRIGGERED, "EDGE COULDLN'T BE TRIGGERED");
+
 
 	YR_CPP_MONITOR_STATE *a_current_state = _A_RUNTIME_MONITOR_FOR_TESTING->get_current_MONITOR_STATE();
 

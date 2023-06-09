@@ -9,9 +9,9 @@
 #define YR_SD_RUNTIME_VERIF_UNIT_TEST_GENERATOR_TEST_HPP_
 
 
-#include "../yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp"
+#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp"
 
-#include "../yr_sd_runtime_verif/YR_CPP_MONITOR.hpp"
+#include "../yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp"
 
 
 #include <QtTest/QtTest>

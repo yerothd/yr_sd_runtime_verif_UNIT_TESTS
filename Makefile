@@ -409,12 +409,12 @@ compiler_moc_header_make_all: _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp: src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp \
+		yr_sd_runtime_verif/src/utils/YR_CPP_UTILS.hpp \
+		yr_sd_runtime_verif/src/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_object.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EVENT.hpp \
 		_generated/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr_sd_runtime_verif_UNIT_TESTS/_generated/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr_sd_runtime_verif_UNIT_TESTS -I/home/yer/yr_sd_runtime_verif_UNIT_TESTS/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtTest -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp -o _generated/moc_YR_UTILS_GENERATOR_MONITOR_TEST.cpp
@@ -434,22 +434,22 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 ####### Compile
 
 _generated/yr_monitor_test_1.o: src/yr_monitor_test_1.cpp src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp \
+		yr_sd_runtime_verif/src/utils/YR_CPP_UTILS.hpp \
+		yr_sd_runtime_verif/src/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_object.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EVENT.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/yr_monitor_test_1.o src/yr_monitor_test_1.cpp
 
 _generated/YR_UTILS_GENERATOR_MONITOR_TEST.o: src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp src/YR_UTILS_GENERATOR_MONITOR_TEST.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EDGE.hpp \
+		yr_sd_runtime_verif/src/utils/YR_CPP_UTILS.hpp \
+		yr_sd_runtime_verif/src/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_object.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_EVENT.hpp \
+		yr_sd_runtime_verif/src/YR_CPP_MONITOR_STATE.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o _generated/YR_UTILS_GENERATOR_MONITOR_TEST.o src/YR_UTILS_GENERATOR_MONITOR_TEST.cpp
 
 _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.o: _generated/qrc_yr_sd_runtime_verif_UNIT_TESTS.cpp 
