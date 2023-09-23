@@ -209,7 +209,9 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_EXPORT_CLASSES_headers_TEST()
 {
 	QString header_FILE_content =
 			_A_RUNTIME_MONITOR_FOR_TESTING
-				->YR_generate_cplusplus_headers_files__AND__SAVE__TO__DISK();
+				->YR_generate_cplusplus_headers_files__AND__SAVE__TO__DISK
+                    ("yr_sd_mealy_UT-GENERATED.hpp",
+                     "A_YR_SD_MEALY_ut");
 
 	QVERIFY (!header_FILE_content.isEmpty());
 //	qDebug() << "header file content: "
@@ -221,7 +223,9 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::_YR_EXPORT_CLASSES_SOURCES_TEST()
 {
 	QString SOURCE_FILE_content =
 			_A_RUNTIME_MONITOR_FOR_TESTING
-				->YR_generate_cplusplus_sources_files__AND__SAVE__TO__DISK();
+				->YR_generate_cplusplus_sources_files__AND__SAVE__TO__DISK
+                    ("yr_sd_mealy_UT-GENERATED.cpp",
+                     "A_YR_SD_MEALY_ut");
 
 	QVERIFY (!SOURCE_FILE_content.isEmpty());
 //	qDebug() << "SOURCE FILE CONTENT: "
