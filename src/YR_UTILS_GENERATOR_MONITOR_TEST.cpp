@@ -191,7 +191,10 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::YR_TRIGGER_A_RUNTIME_MONITOR_EDGE_TEST()
 
 void YR_UTILS_GENERATOR_MONITOR_TEST::DOT_PRINT_VIEW_RUNTIME_MONITOR_TEST()
 {
-	QString dot_file_content = _A_RUNTIME_MONITOR_FOR_TESTING->print_TO_dot_FILE();
+	QString dot_file_content =
+        _A_RUNTIME_MONITOR_FOR_TESTING
+            ->print_TO_dot_FILE(false,
+                                false);
 
 	QVERIFY (!dot_file_content.isEmpty());
 }
@@ -199,7 +202,11 @@ void YR_UTILS_GENERATOR_MONITOR_TEST::DOT_PRINT_VIEW_RUNTIME_MONITOR_TEST()
 
 void YR_UTILS_GENERATOR_MONITOR_TEST::DOT_PRINT_2_VIEW_RUNTIME_MONITOR_TEST()
 {
-	QString dot_file_content = _A_RUNTIME_MONITOR_FOR_TESTING->print_TO_dot_FILE("YR_RUNTIME_TEST_DOT_PRINT");
+	QString dot_file_content =
+        _A_RUNTIME_MONITOR_FOR_TESTING
+            ->print_TO_dot_FILE("YR_RUNTIME_TEST_DOT_PRINT",
+                                false,
+                                false);
 
 	QVERIFY (!dot_file_content.isEmpty());
 }
